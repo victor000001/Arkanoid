@@ -39,7 +39,7 @@ Si `$ARGUMENTS` está vacío:
 
 Si `$ARGUMENTS` tiene un valor:
 
-- Busca el archivo en `specs/`. El usuario puede haber escrito el nombre completo (`01-mvp-arkanoid`), solo el número (`01`), o solo el slug (`mvp-arkanoid`). Intenta encontrar el archivo correcto en cualquiera de esos casos.
+- Busca el archivo en `specs/`. El usuario puede haber escrito el nombre completo (`01-mvp`), solo el número (`01`), o solo el slug (`mvp`). Intenta encontrar el archivo correcto en cualquiera de esos casos.
 - Si no encuentras el archivo, muestra los specs disponibles y pide al usuario que corrija el nombre.
 - Si lo encuentras, continúa a la Fase 2.
 
@@ -50,6 +50,10 @@ Si `$ARGUMENTS` tiene un valor:
 Lee el archivo del spec que localizaste en la Fase 1 usando la herramienta Read o `cat`.
 
 En el contenido del archivo, busca la línea que contiene el estado del spec. La etiqueta del header normalmente es `**Estado:**` (español) o `**Status:**` (inglés), pero puede usar cualquier idioma. Identifícala por posición (la línea de estado cerca del inicio del spec) y por la state machine que la rodea, no por la etiqueta exacta.
+
+La línea lista las cinco opciones, cada una con una casilla, y la opción activa está marcada con `[x]` (las demás con `[ ]`). **El estado del spec es la opción que tiene la `[x]`.** Ejemplo: `[ ] Borrador  [ ] En revisión  [x] Aprobado  [ ] Implementado  [ ] Obsoleto` significa estado `Aprobado`.
+
+Si no hay ninguna casilla marcada, o hay más de una `[x]`, el header está mal formado: detente y pídele al usuario que deje exactamente una `[x]` antes de continuar.
 
 **Regla absoluta:** Solo puedes continuar si el estado **significa "Aprobado"** — sin importar el idioma usado.
 
@@ -102,8 +106,8 @@ Una vez que hayas confirmado que el estado significa `Aprobado`:
 
 1. Deriva el nombre de la rama del nombre completo del archivo del spec, sin la extensión. Formato: `spec-NN-slug`. Ejemplos:
 
-   - `01-mvp-arkanoid.md` → rama `spec-01-mvp-arkanoid`
-   - `02-powerups.md` → rama `spec-02-powerups`
+   - `01-mvp.md` → rama `spec-01-mvp`
+   - `02-exportar-datos.md` → rama `spec-02-exportar-datos`
 
 2. Comprueba si la rama ya existe:
 
@@ -175,7 +179,7 @@ Una vez confirmado, sigue estas reglas durante toda la implementación:
 ✅ Todos los pasos del plan están implementados.
 
 Siguiente paso: verificar los acceptance criteria del spec uno por uno.
-Si todos pasan, actualiza el estado del spec a "Implementado" (o el equivalente
+Si todos pasan, mueve la `x` del estado a `[x] Implementado` (o el equivalente
 en el idioma de tu repo) y haz el commit final antes de mergear esta rama.
 ```
 
@@ -184,18 +188,18 @@ en el idioma de tu repo) y haz el commit final antes de mergear esta rama.
 ## Resumen del comportamiento esperado
 
 ```
-/spec-impl 01-mvp-arkanoid
+/spec-impl 01-mvp
 
-  Fase 1  →  Encuentra specs/01-mvp-arkanoid.md
+  Fase 1  →  Encuentra specs/01-mvp.md
   Fase 2  →  Lee el estado → "Aprobado" (o "Approved", etc.) → ✅ continúa
-  Fase 3  →  git checkout -b spec-01-mvp-arkanoid → git checkout spec-01-mvp-arkanoid
+  Fase 3  →  git checkout -b spec-01-mvp → git checkout spec-01-mvp
              Muestra objetivo, scope, plan y criterios
   Fase 4  →  Implementa paso a paso con pausas
              Termina recordando verificar los acceptance criteria
 
-/spec-impl 02-powerups  (estado: Borrador / Draft)
+/spec-impl 02-exportar-datos  (estado: Borrador / Draft)
 
-  Fase 1  →  Encuentra specs/02-powerups.md
+  Fase 1  →  Encuentra specs/02-exportar-datos.md
   Fase 2  →  Lee el estado → "Borrador" → ❌ se detiene
              Muestra el mensaje de error estándar
              No crea rama, no toca código

@@ -11,11 +11,12 @@ Cada spec empieza con metadata en formato blockquote (sin tablas, sin bloques, s
 ```markdown
 # SPEC NN — Título corto y descriptivo
 
-> **Estado:** Borrador · **Depende de:** SPEC 01, SPEC 02 · **Fecha:** YYYY-MM-DD
+> **Estado:** [x] Borrador  [ ] En revisión  [ ] Aprobado  [ ] Implementado  [ ] Obsoleto
+> **Depende de:** SPEC 01, SPEC 02 · **Fecha:** YYYY-MM-DD
 > **Objetivo:** Una sola frase. Si necesitas dos frases, la feature es demasiado grande.
 ```
 
-**Estados válidos:** `Borrador`, `En revisión`, `Aprobado`, `Implementado`, `Obsoleto`.
+**Estados válidos:** `Borrador`, `En revisión`, `Aprobado`, `Implementado`, `Obsoleto`. Se listan los cinco siempre y se marca el activo con `[x]`; los demás quedan en `[ ]`. Cambiar de estado = **mover la `x`**, nunca borrar las otras opciones. Debe haber **exactamente una** `[x]`.
 
 > Las etiquetas de arriba son las de este repo (en español). Los skills también aceptan equivalentes en otro idioma (ej. inglés `Draft` / `In review` / `Approved` / `Implemented` / `Obsolete`). Elige un set por repo y mantén la consistencia.
 
@@ -61,18 +62,18 @@ Las estructuras concretas que aparecen o cambian. Usa código real, no pseudocó
 ## Data model
 
 \`\`\`js
-// Game state
+// Estado de la feature
 const state = {
-level: 1,
-score: 0,
-highScores: [/* { score, level, date } */],
+items: [],            // { id, nombre, creadoEn }
+filtroActivo: null,
+cargando: false,
 };
 \`\`\`
 
 Convenciones:
 
-- Coordenadas: origen arriba-izquierda.
-- Velocidades en píxeles/frame.
+- IDs: string (UUID), nunca índices de array.
+- Timestamps en formato ISO 8601.
 ```
 
 Si la feature no introduce datos nuevos, escríbelo explícitamente: _"Esta feature no introduce nuevas estructuras de datos. Reutiliza el modelo del SPEC 01."_
@@ -107,9 +108,9 @@ Checklist booleano. Cada ítem se puede verificar con sí o no.
 ```markdown
 ## Acceptance criteria
 
-- [ ] El juego carga sin errores en la consola.
-- [ ] Romper un brick suma exactamente 10 puntos.
-- [ ] Recargar la página preserva los high-scores.
+- [ ] La app arranca sin errores en la consola/log.
+- [ ] Crear un item lo añade a la lista y lo deja persistido.
+- [ ] Reiniciar la app preserva los items guardados.
 ```
 
 **Anti-patrones a evitar:**
@@ -117,7 +118,7 @@ Checklist booleano. Cada ítem se puede verificar con sí o no.
 - ❌ "Que funcione bien." → no verificable.
 - ❌ "Buena UX." → subjetivo.
 - ❌ "Sin bugs." → no operacional.
-- ✅ "Pulsar Esc pausa el juego y muestra el menú." → verificable, booleano.
+- ✅ "Pulsar Esc cierra el modal y vuelve a la lista." → verificable, booleano.
 
 ---
 
@@ -147,7 +148,7 @@ Solo cuando hay riesgos no obvios. Tabla simple:
 
 | Riesgo                                | Mitigación                                                                  |
 | ------------------------------------- | --------------------------------------------------------------------------- |
-| localStorage deshabilitado en modo privado | Fallback a objeto en memoria. El juego sigue corriendo, solo que no persiste. |
+| localStorage deshabilitado en modo privado | Fallback a objeto en memoria. La app sigue corriendo, solo que no persiste. |
 | Schema futuro incompatible            | La key incluye `:v1`. Migración documentada en `persistence.js`.            |
 ```
 
@@ -162,9 +163,9 @@ Repite explícitamente al final qué **no** se hará en este spec. Esta repetici
 ```markdown
 ## Qué **no** entra en este spec
 
-- Editor visual (otro spec si algún día llega).
-- Multijugador.
-- Versión móvil.
+- Edición masiva (otro spec si algún día llega).
+- Integración con servicios de terceros.
+- Versión móvil dedicada.
 
 Cada una de esas, si llega, va en su propio spec.
 ```
@@ -174,7 +175,7 @@ Cada una de esas, si llega, va en su propio spec.
 ## Reglas globales sobre todo el documento
 
 - **Una frase por idea.** Si una frase tiene dos comas y un punto y coma, divídela.
-- **Nombres concretos.** Si dices "el módulo de niveles", di `src/levels.js`. Si dices "una key", da el string exacto.
+- **Nombres concretos.** Si dices "el módulo de almacenamiento", di `src/store.js`. Si dices "una key", da el string exacto.
 - **Sin TODOs.** Un TODO en un spec significa que la decisión no se tomó. Tómala o anótala como decisión pendiente con una razón.
 - **Sin código ejecutable largo.** El spec describe; el código se escribe después. Snippets cortos para ilustrar estructuras de datos están bien; funciones completas no.
 - **Markdown estándar.** Sin extensiones raras. Debe renderizar en GitHub sin sorpresas.

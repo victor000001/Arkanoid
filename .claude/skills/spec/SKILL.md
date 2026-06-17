@@ -50,7 +50,7 @@ Haz preguntas en bloques de 3 a 5 a la vez (no una sola pregunta seguida de otra
 
 - Usa preguntas concretas, no abiertas. ❌ "¿Cómo imaginas la persistencia?" → ✅ "¿La persistencia es localStorage, IndexedDB, o un archivo JSON en disco?"
 - Cuando ofrezcas opciones, da 2–4, marca cuál es tu recomendación y por qué.
-- Si detectas una respuesta que abriría la caja de Pandora (ej. "y además queremos multijugador"), señala que merece su propio spec y pregunta si lo dejamos fuera del scope de este.
+- Si detectas una respuesta que abriría la caja de Pandora (ej. "y además queremos exportar a PDF"), señala que merece su propio spec y pregunta si lo dejamos fuera del scope de este.
 
 **Cuándo dejar de preguntar:**
 
@@ -94,14 +94,14 @@ Orden estricto:
 
 Cuando todas las secciones estén confirmadas:
 
-1. Determina el siguiente número secuencial mirando `specs/`. Si el último es `02-powerups.md`, este será `03-`.
-2. Genera un slug corto a partir del objetivo (ej. `levels-and-highscores`).
+1. Determina el siguiente número secuencial mirando `specs/`. Si el último es `02-exportar-datos.md`, este será `03-`.
+2. Genera un slug corto a partir del objetivo (ej. `exportar-datos`).
 3. Pregunta al usuario si el nombre de archivo propuesto le sirve antes de escribirlo.
 4. Crea el archivo en `specs/NN-slug.md` con todas las secciones aprobadas.
-5. Marca el estado como `Borrador` por defecto. **No lo marques como `Aprobado` automáticamente** — eso lo hace el usuario una vez que lo ha releído.
+5. En la línea de estado, marca `[x] Borrador` y deja las otras cuatro opciones en `[ ]`. Lista siempre las cinco. **No marques `[x] Aprobado` automáticamente** — eso lo hace el usuario, moviendo la `x`, una vez que lo ha releído.
 6. Confirma al usuario:
    - Ruta del archivo creado.
-   - Recordatorio: el spec está en estado `Borrador`. Cámbialo a `Aprobado` una vez que lo hayas releído.
+   - Recordatorio: el spec está en estado `Borrador`. Para aprobarlo, mueve la `x` a `[x] Aprobado` una vez que lo hayas releído.
    - Siguiente paso: una vez revisado y aprobado, ejecuta `/spec-impl NN-slug` para implementarlo.
    - **Detente aquí.** No propongas implementar el spec, escribir código, ni hacer ninguna acción más allá de esta confirmación.
 
@@ -128,6 +128,6 @@ Ejemplo de un bloque bien formado:
 
 ## Argumentos
 
-Si el usuario invocó `/spec levels-and-highscores`, usa `levels-and-highscores` como sugerencia inicial de slug, pero confirma con el usuario antes de escribir el archivo.
+Si el usuario invocó `/spec exportar-datos`, usa `exportar-datos` como sugerencia inicial de slug, pero confirma con el usuario antes de escribir el archivo.
 
 Si invocó `/spec` sin argumentos, empieza pidiendo la descripción de una frase.

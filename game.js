@@ -8,7 +8,7 @@ const PADDLE_Y = CANVAS_H - 40;      // distancia fija al borde inferior
 const PADDLE_SPEED = 7;              // px por frame
 
 const BALL_SIZE = 14;
-const BALL_SPEED = 5;                // magnitud de velocidad inicial
+const BALL_SPEED = 7;                // magnitud de velocidad inicial
 
 const BLOCK_W = 64, BLOCK_H = 24;    // tamaño dibujado (sprite nativo 32×16, escalado)
 const BLOCK_COLS = 10;
@@ -24,6 +24,7 @@ const ctx = canvas.getContext('2d');
 // --- Audio ---
 const sndBounce = new Audio('assets/sounds/ball-bounce.mp3');
 const sndBreak = new Audio('assets/sounds/break-sound.mp3');
+sndBreak.volume = 0.3;   // efecto de rotura más bajo que el rebote
 
 // Reproduce un efecto desde el inicio (evita cortes en rebotes seguidos).
 function playSound(snd) {

@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Estado** | Aprobado |
+| **Estado** | Implementado |
 | **Dependencias** | Ninguna (primer spec). Usa `assets/spritesheet.js`, `assets/spritesheet-breakout.png` y `assets/sounds/*.mp3` ya existentes. |
 | **Fecha** | 2026-06-17 |
 | **Objetivo (una frase)** | Un Arkanoid mínimo jugable en el navegador: paddle controlado por teclado, una pelota que rebota, una rejilla de bloques de un solo golpe, 3 vidas, y pantallas de victoria y game over con reinicio por tecla. |
@@ -174,23 +174,23 @@ Detectar victoria cuando no queda ningún bloque `alive` → estado `'won'`. Dib
 
 Checklist booleano, verificable jugando con `index.html` abierto en el navegador (servido desde un servidor estático local):
 
-- [ ] La página carga sin errores en consola y muestra un canvas de 800×600.
-- [ ] El paddle se dibuja con su sprite y se mueve con ←/→.
-- [ ] El paddle no se sale por los bordes izquierdo ni derecho.
-- [ ] Al inicio la pelota aparece pegada al paddle y lo sigue al moverse.
-- [ ] Pulsar Espacio lanza la pelota; deja de seguir al paddle.
-- [ ] La pelota rebota en las paredes superior, izquierda y derecha.
-- [ ] La pelota rebota en el paddle, y el ángulo de salida varía según el punto de impacto.
-- [ ] Suena `ball-bounce.mp3` en cada rebote.
-- [ ] Se dibuja una rejilla de 5 filas × 10 columnas, con un color distinto por fila.
-- [ ] La pelota destruye un bloque al golpearlo y rebota correctamente.
-- [ ] Suena `break-sound.mp3` al romper un bloque.
-- [ ] Al romper un bloque se reproduce la animación de explosión de su color y luego desaparece.
-- [ ] Empiezas con 3 vidas, indicadas en pantalla.
-- [ ] Si la pelota cae por abajo, se pierde una vida y la pelota vuelve a pegarse al paddle.
-- [ ] Al llegar a 0 vidas aparece la pantalla de game over.
-- [ ] Al destruir todos los bloques aparece la pantalla de victoria.
-- [ ] Desde cualquiera de las dos pantallas de fin, la tecla de reinicio empieza una partida nueva con 3 vidas y la rejilla completa.
+- [x] La página carga sin errores en consola y muestra un canvas de 800×600.
+- [x] El paddle se dibuja con su sprite y se mueve con ←/→.
+- [x] El paddle no se sale por los bordes izquierdo ni derecho.
+- [x] Al inicio la pelota aparece pegada al paddle y lo sigue al moverse.
+- [x] Pulsar Espacio lanza la pelota; deja de seguir al paddle.
+- [x] La pelota rebota en las paredes superior, izquierda y derecha.
+- [x] La pelota rebota en el paddle, y el ángulo de salida varía según el punto de impacto.
+- [x] Suena `ball-bounce.mp3` en cada rebote.
+- [x] Se dibuja una rejilla de 5 filas × 10 columnas, con un color distinto por fila.
+- [x] La pelota destruye un bloque al golpearlo y rebota correctamente.
+- [x] Suena `break-sound.mp3` al romper un bloque.
+- [x] Al romper un bloque se reproduce la animación de explosión de su color y luego desaparece.
+- [x] Empiezas con 3 vidas, indicadas en pantalla.
+- [x] Si la pelota cae por abajo, se pierde una vida y la pelota vuelve a pegarse al paddle.
+- [x] Al llegar a 0 vidas aparece la pantalla de game over.
+- [x] Al destruir todos los bloques aparece la pantalla de victoria.
+- [x] Desde cualquiera de las dos pantallas de fin, la tecla de reinicio empieza una partida nueva con 3 vidas y la rejilla completa.
 
 ---
 

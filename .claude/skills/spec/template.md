@@ -1,61 +1,61 @@
-# Template for a useful spec
+# Template para un spec útil
 
-This file is the reference the `/spec` skill consults when generating specs. Each section includes its purpose and a minimal example. **It is not text to be copied verbatim** — it is the shape the skill must respect.
+Este archivo es la referencia que el skill `/spec` consulta al generar specs. Cada sección incluye su propósito y un ejemplo mínimo. **No es texto para copiar literalmente** — es la forma que el skill debe respetar.
 
 ---
 
 ## Header
 
-Every spec starts with metadata in a blockquote (no tables, no blocks, simple as shown below) format:
+Cada spec empieza con metadata en formato blockquote (sin tablas, sin bloques, simple como se muestra abajo):
 
 ```markdown
-# SPEC NN — Short, descriptive title
+# SPEC NN — Título corto y descriptivo
 
-> **Status:** Draft · **Depends on:** SPEC 01, SPEC 02 · **Date:** YYYY-MM-DD
-> **Objective:** A single sentence. If you need two sentences, the feature is too big.
+> **Estado:** Borrador · **Depende de:** SPEC 01, SPEC 02 · **Fecha:** YYYY-MM-DD
+> **Objetivo:** Una sola frase. Si necesitas dos frases, la feature es demasiado grande.
 ```
 
-**Valid states:** `Draft`, `In review`, `Approved`, `Implemented`, `Obsolete`.
+**Estados válidos:** `Borrador`, `En revisión`, `Aprobado`, `Implementado`, `Obsoleto`.
 
-> The labels above are the English defaults. The skills also accept equivalents in any language (e.g. Spanish `Borrador` / `En revisión` / `Aprobado` / `Implementado` / `Obsoleto`). Pick one set per repo and stay consistent.
+> Las etiquetas de arriba son las de este repo (en español). Los skills también aceptan equivalentes en otro idioma (ej. inglés `Draft` / `In review` / `Approved` / `Implemented` / `Obsolete`). Elige un set por repo y mantén la consistencia.
 
-**Objective rule:** one sentence that a human reads in 5 seconds and understands what is going to be built. If it doesn't fit in one sentence, split the feature.
-
----
-
-## Section 1 — Why this spec exists (optional)
-
-For specs that take non-obvious decisions or break project patterns, a brief section explaining the **why** of the work. Not the what — the what comes later.
-
-For simple specs, omit it.
+**Regla del objetivo:** una frase que un humano lee en 5 segundos y entiende qué se va a construir. Si no cabe en una frase, divide la feature.
 
 ---
 
-## Section 2 — Scope
+## Sección 1 — Por qué existe este spec (opcional)
 
-Two explicit sub-blocks. **Both are mandatory.**
+Para specs que toman decisiones no obvias o rompen patrones del proyecto, una sección breve que explique el **por qué** del trabajo. No el qué — el qué viene después.
+
+Para specs simples, omítela.
+
+---
+
+## Sección 2 — Scope
+
+Dos sub-bloques explícitos. **Ambos son obligatorios.**
 
 ```markdown
 ## Scope
 
-**In:**
+**Entra:**
 
-- Concrete thing one.
-- Concrete thing two.
+- Cosa concreta uno.
+- Cosa concreta dos.
 
-**Out of scope (for future specs):**
+**Fuera de scope (para specs futuros):**
 
-- Something that could be done but not now.
-- Something that came up in the conversation but is not in.
+- Algo que podría hacerse pero no ahora.
+- Algo que surgió en la conversación pero no entra.
 ```
 
-**Why "out" matters:** it captures the things the user mentioned during the question phase but were decided to be deferred. Without that record, during implementation there will be a temptation to slip them in "while we're at it".
+**Por qué importa el "fuera":** captura las cosas que el usuario mencionó durante la fase de preguntas pero que se decidió diferir. Sin ese registro, durante la implementación habrá la tentación de colarlas "ya que estamos".
 
 ---
 
-## Section 3 — Data model
+## Sección 3 — Data model
 
-The concrete structures that appear or change. Use real code, not abstract pseudocode.
+Las estructuras concretas que aparecen o cambian. Usa código real, no pseudocódigo abstracto.
 
 ```markdown
 ## Data model
@@ -69,112 +69,112 @@ highScores: [/* { score, level, date } */],
 };
 \`\`\`
 
-Conventions:
+Convenciones:
 
-- Coordinates: origin top-left.
-- Velocities in pixels/frame.
+- Coordenadas: origen arriba-izquierda.
+- Velocidades en píxeles/frame.
 ```
 
-If the feature introduces no new data, write it explicitly: _"This feature introduces no new data structures. It reuses the model from SPEC 01."_
+Si la feature no introduce datos nuevos, escríbelo explícitamente: _"Esta feature no introduce nuevas estructuras de datos. Reutiliza el modelo del SPEC 01."_
 
 ---
 
-## Section 4 — Implementation plan
+## Sección 4 — Plan de implementación
 
-Numbered steps. Each step must leave the system in a **functional and runnable** state. No "implement half and continue tomorrow".
+Pasos numerados. Cada paso debe dejar el sistema en un estado **funcional y ejecutable**. Nada de "implementar la mitad y continuar mañana".
 
 ```markdown
-## Implementation plan
+## Plan de implementación
 
-1. Create file X with an empty skeleton.
-2. Implement function A in X. Manual test: run Y, see Z.
-3. Wire X to existing module W.
+1. Crear el archivo X con un skeleton vacío.
+2. Implementar la función A en X. Test manual: ejecutar Y, ver Z.
+3. Conectar X con el módulo existente W.
 4. ...
 ```
 
-**Rules:**
+**Reglas:**
 
-- Each step must be commitable on its own.
-- If a step requires more than 30–50 lines of code, split it.
-- The last step of the plan is **not** "test everything" — that is the acceptance criteria.
+- Cada paso debe ser commiteable por sí solo.
+- Si un paso requiere más de 30–50 líneas de código, divídelo.
+- El último paso del plan **no** es "probar todo" — eso son los acceptance criteria.
 
 ---
 
-## Section 5 — Acceptance criteria
+## Sección 5 — Acceptance criteria
 
-Boolean checklist. Each item can be verified with yes or no.
+Checklist booleano. Cada ítem se puede verificar con sí o no.
 
 ```markdown
 ## Acceptance criteria
 
-- [ ] The game loads without errors in the console.
-- [ ] Breaking a brick adds exactly 10 points.
-- [ ] Reloading the page preserves the high-scores.
+- [ ] El juego carga sin errores en la consola.
+- [ ] Romper un brick suma exactamente 10 puntos.
+- [ ] Recargar la página preserva los high-scores.
 ```
 
-**Anti-patterns to avoid:**
+**Anti-patrones a evitar:**
 
-- ❌ "That it works well." → not verifiable.
-- ❌ "Good UX." → subjective.
-- ❌ "No bugs." → not operational.
-- ✅ "Pressing Esc pauses the game and shows the menu." → verifiable, boolean.
+- ❌ "Que funcione bien." → no verificable.
+- ❌ "Buena UX." → subjetivo.
+- ❌ "Sin bugs." → no operacional.
+- ✅ "Pulsar Esc pausa el juego y muestra el menú." → verificable, booleano.
 
 ---
 
-## Section 6 — Decisions taken and discarded
+## Sección 6 — Decisiones tomadas y descartadas
 
-The section that has the most value 3 months from now. Capture **what you considered**, not just what you chose.
+La sección que más valor tiene dentro de 3 meses. Captura **qué consideraste**, no solo qué elegiste.
 
 ```markdown
-## Decisions
+## Decisiones
 
-- **Yes:** localStorage for persistence. Fits in <5MB and we don't need queries.
-- **No:** IndexedDB. Overengineering for this case.
-- **Yes:** versioned key (`save:v1`). Lets us migrate the schema later without breaking.
-- **No:** cloud sync. Goes in another spec if it ever lands.
+- **Sí:** localStorage para persistencia. Cabe en <5MB y no necesitamos queries.
+- **No:** IndexedDB. Overengineering para este caso.
+- **Sí:** key versionada (`save:v1`). Permite migrar el schema después sin romper.
+- **No:** sync en la nube. Va en otro spec si algún día llega.
 ```
 
-Each decision ideally has a brief reason. Decisions without a reason are the first ones to be questioned later.
+Cada decisión idealmente tiene una razón breve. Las decisiones sin razón son las primeras en ser cuestionadas después.
 
 ---
 
-## Section 7 — Identified risks (optional)
+## Sección 7 — Riesgos identificados (opcional)
 
-Only when there are non-obvious risks. Simple table:
+Solo cuando hay riesgos no obvios. Tabla simple:
 
 ```markdown
-## Risks
+## Riesgos
 
-| Risk                                  | Mitigation                                                                  |
+| Riesgo                                | Mitigación                                                                  |
 | ------------------------------------- | --------------------------------------------------------------------------- |
-| localStorage disabled in private mode | Fallback to in-memory object. The game still runs, it just doesn't persist. |
-| Future incompatible schema            | Key includes `:v1`. Migration documented in `persistence.js`.               |
+| localStorage deshabilitado en modo privado | Fallback a objeto en memoria. El juego sigue corriendo, solo que no persiste. |
+| Schema futuro incompatible            | La key incluye `:v1`. Migración documentada en `persistence.js`.            |
 ```
 
-For small specs or very contained features, omit it.
+Para specs pequeños o features muy contenidas, omítela.
 
 ---
 
-## Final section — What is NOT in (reinforcement)
+## Sección final — Qué NO entra (refuerzo)
 
-Repeat explicitly at the end what **will not** be done in this spec. This repetition is deliberate — the Scope section already says it, but at the end of the document it serves as a reminder when someone reads only the last lines.
+Repite explícitamente al final qué **no** se hará en este spec. Esta repetición es deliberada — la sección de Scope ya lo dice, pero al final del documento sirve como recordatorio para quien lee solo las últimas líneas.
 
 ```markdown
-## What is **not** in this spec
+## Qué **no** entra en este spec
 
-- Visual editor (another spec if it ever lands).
-- Multiplayer.
-- Mobile version.
+- Editor visual (otro spec si algún día llega).
+- Multijugador.
+- Versión móvil.
 
-Each one of those, if it lands, goes in its own spec.
+Cada una de esas, si llega, va en su propio spec.
 ```
 
 ---
 
-## Global rules about the whole document
+## Reglas globales sobre todo el documento
 
-- **One sentence per idea.** If a sentence has two commas and a semicolon, split it.
-- **Concrete names.** If you say "the levels module", say `src/levels.js`. If you say "a key", give the exact string.
-- **No TODOs.** A TODO in a spec means the decision was not made. Make it or note it as a pending decision with a reason.
-- **No long executable code.** The spec describes; the code is written afterwards. Short snippets to illustrate data structures are fine; full functions are not.
-- **Standard markdown.** No weird extensions. It must render on GitHub without surprises.
+- **Una frase por idea.** Si una frase tiene dos comas y un punto y coma, divídela.
+- **Nombres concretos.** Si dices "el módulo de niveles", di `src/levels.js`. Si dices "una key", da el string exacto.
+- **Sin TODOs.** Un TODO en un spec significa que la decisión no se tomó. Tómala o anótala como decisión pendiente con una razón.
+- **Sin código ejecutable largo.** El spec describe; el código se escribe después. Snippets cortos para ilustrar estructuras de datos están bien; funciones completas no.
+- **Markdown estándar.** Sin extensiones raras. Debe renderizar en GitHub sin sorpresas.

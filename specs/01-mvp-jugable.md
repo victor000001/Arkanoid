@@ -2,7 +2,7 @@
 
 | Campo | Valor |
 |---|---|
-| **Estado** | Borrador |
+| **Estado** | Aprobado |
 | **Dependencias** | Ninguna (primer spec). Usa `assets/spritesheet.js`, `assets/spritesheet-breakout.png` y `assets/sounds/*.mp3` ya existentes. |
 | **Fecha** | 2026-06-17 |
 | **Objetivo (una frase)** | Un Arkanoid mínimo jugable en el navegador: paddle controlado por teclado, una pelota que rebota, una rejilla de bloques de un solo golpe, 3 vidas, y pantallas de victoria y game over con reinicio por tecla. |

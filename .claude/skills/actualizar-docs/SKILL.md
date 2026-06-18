@@ -145,6 +145,7 @@ Solo después del OK del usuario:
   El cambio de estado de un spec es siempre decisión humana (ver `/spec` y `/spec-impl`).
 - **Nunca hagas commit automáticamente.** Dejas el árbol de trabajo modificado y listo para que
   el humano lo revise.
+- **Nunca hagas `git push`.** El push lo hace siempre el usuario, manualmente, tras su revisión.
 - **Nunca inventes desfase.** Si los docs están al día, repórtalo y termina.
 - **Nunca toques código fuente ni assets del proyecto.** Solo editas `CLAUDE.md` y `README.md`.
 - **Si un hallazgo nace de una contradicción real** (ej. spec `Aprobado` sin código), no la

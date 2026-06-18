@@ -185,6 +185,16 @@ en el idioma de tu repo) y haz el commit final antes de mergear esta rama.
 
 ---
 
+## Reglas duras
+
+- **Nunca hagas `git push`.** El push lo hace **siempre el usuario**, manualmente, después de su
+  propia revisión. Tu trabajo termina dejando los commits en la rama local `spec-NN-slug`; nunca
+  publiques la rama ni subas commits al remoto, aunque parezca el siguiente paso natural.
+- **Nunca hagas merge a `master` por tu cuenta.** Crear y trabajar en la rama del spec es parte
+  del flujo; mergearla es decisión del usuario.
+
+---
+
 ## Resumen del comportamiento esperado
 
 ```

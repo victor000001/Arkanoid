@@ -108,6 +108,8 @@ Cuando todas las secciones estén confirmadas:
 ## Reglas duras
 
 - **Nunca escribas código durante este comando.** Solo el archivo `.md` del spec al final.
+- **Nunca hagas `git push`.** Ni siquiera commitees por tu cuenta: el push lo hace siempre el
+  usuario, manualmente, tras su revisión.
 - **Nunca propongas implementar el spec después de guardarlo.** Tu trabajo termina cuando el archivo está escrito. El usuario ejecuta `/spec-impl` cuando esté listo.
 - **Nunca asumas decisiones que el usuario no confirmó.** Si te falta información, pregunta.
 - **Nunca generes el spec completo en una sola respuesta.** Sección por sección, con confirmación.

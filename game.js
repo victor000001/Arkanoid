@@ -142,6 +142,13 @@ document.addEventListener('keydown', (e) => {
       launchBall();
     }
   }
+  if (e.key === 'p' || e.key === 'P' || e.key === 'Escape') {
+    if (game.state === 'playing') {
+      game.state = 'paused';
+    } else if (game.state === 'paused') {
+      game.state = 'playing';
+    }
+  }
 });
 
 document.addEventListener('keyup', (e) => {
@@ -151,8 +158,8 @@ document.addEventListener('keyup', (e) => {
 
 // --- Lógica ---
 function update() {
-  // En pantallas de fin, el juego no simula nada.
-  if (game.state === 'gameover' || game.state === 'won') return;
+  // En pantallas de fin o en pausa, el juego no simula nada.
+  if (game.state === 'gameover' || game.state === 'won' || game.state === 'paused') return;
 
   // Dirección del paddle según teclas
   paddle.dx = (keys.right ? 1 : 0) - (keys.left ? 1 : 0);
@@ -292,10 +299,15 @@ function draw() {
   if (game.state === 'won' || game.state === 'gameover') {
     drawEndScreen(game.state === 'won' ? '¡Victoria!' : 'Game Over');
   }
+
+  // Overlay de pausa
+  if (game.state === 'paused') {
+    drawEndScreen('Pausa', 'Pulsa P o Escape para continuar');
+  }
 }
 
-// Overlay semitransparente con el mensaje de fin y la instrucción de reinicio.
-function drawEndScreen(title) {
+// Overlay semitransparente con un título y una instrucción.
+function drawEndScreen(title, subtitle = 'Pulsa Espacio para jugar de nuevo') {
   ctx.fillStyle = 'rgba(0, 0, 0, 0.7)';
   ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
@@ -307,7 +319,7 @@ function drawEndScreen(title) {
   ctx.fillText(title, CANVAS_W / 2, CANVAS_H / 2 - 30);
 
   ctx.font = '20px monospace';
-  ctx.fillText('Pulsa Espacio para jugar de nuevo', CANVAS_W / 2, CANVAS_H / 2 + 30);
+  ctx.fillText(subtitle, CANVAS_W / 2, CANVAS_H / 2 + 30);
 }
 
 // Dibuja las explosiones activas y descarta las que superaron su duración.

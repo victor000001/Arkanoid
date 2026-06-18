@@ -1,6 +1,6 @@
 # SPEC 02 — Pausar y reanudar el juego
 
-> **Estado:** [x] Borrador  [ ] En revisión  [ ] Aprobado  [ ] Implementado  [ ] Obsoleto
+> **Estado:** [ ] Borrador  [ ] En revisión  [ ] Aprobado  [x] Implementado  [ ] Obsoleto
 > **Depende de:** SPEC 01 · **Fecha:** 2026-06-17
 > **Objetivo:** Permitir pausar y reanudar la partida en curso con `P` o `Escape`, congelando la simulación y mostrando un overlay de pausa.
 
@@ -65,16 +65,16 @@ En `draw()`, cuando `game.state === 'paused'`, dibujar un overlay reutilizando e
 
 Checklist booleano, verificable jugando con `index.html` abierto (servido desde un servidor estático local):
 
-- [ ] Durante el juego (`'playing'`), pulsar `P` pausa la partida y aparece el overlay de pausa.
-- [ ] Durante el juego, pulsar `Escape` también pausa la partida.
-- [ ] Estando en pausa, pulsar `P` reanuda la partida y el overlay desaparece.
-- [ ] Estando en pausa, pulsar `Escape` también reanuda la partida.
-- [ ] Mientras está pausado, el paddle no se mueve aunque se pulsen las flechas.
-- [ ] Mientras está pausado, la pelota no avanza ni rebota.
-- [ ] Al reanudar, el paddle, la pelota y sus velocidades continúan exactamente desde donde se pausó.
-- [ ] El overlay de pausa muestra el título "Pausa" y la instrucción para continuar, con el estilo semitransparente de `drawEndScreen`.
-- [ ] Pulsar `P` o `Escape` en estado `'ready'`, `'won'` o `'gameover'` no activa la pausa.
-- [ ] La tecla `Espacio` (saque/reinicio) sigue funcionando como antes y no se ve afectada por la pausa.
+- [x] Durante el juego (`'playing'`), pulsar `P` pausa la partida y aparece el overlay de pausa.
+- [x] Durante el juego, pulsar `Escape` también pausa la partida.
+- [x] Estando en pausa, pulsar `P` reanuda la partida y el overlay desaparece.
+- [x] Estando en pausa, pulsar `Escape` también reanuda la partida.
+- [x] Mientras está pausado, el paddle no se mueve aunque se pulsen las flechas.
+- [x] Mientras está pausado, la pelota no avanza ni rebota.
+- [x] Al reanudar, el paddle, la pelota y sus velocidades continúan exactamente desde donde se pausó.
+- [x] El overlay de pausa muestra el título "Pausa" y la instrucción para continuar, con el estilo semitransparente de `drawEndScreen`.
+- [x] Pulsar `P` o `Escape` en estado `'ready'`, `'won'` o `'gameover'` no activa la pausa.
+- [x] La tecla `Espacio` (saque/reinicio) sigue funcionando como antes y no se ve afectada por la pausa.
 
 ---
 
